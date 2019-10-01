@@ -1,0 +1,11 @@
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\bin\Debug\netcoreapp2.0\AgendaITIX.deps.json
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\bin\Debug\netcoreapp2.0\AgendaITIX.runtimeconfig.json
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\bin\Debug\netcoreapp2.0\AgendaITIX.runtimeconfig.dev.json
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\bin\Debug\netcoreapp2.0\AgendaITIX.dll
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\obj\Debug\netcoreapp2.0\AgendaITIX.csprojAssemblyReference.cache
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\obj\Debug\netcoreapp2.0\AgendaITIX.csproj.CoreCompileInputs.cache
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\obj\Debug\netcoreapp2.0\AgendaITIX.AssemblyInfoInputs.cache
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\obj\Debug\netcoreapp2.0\AgendaITIX.AssemblyInfo.cs
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\bin\Debug\netcoreapp2.0\AgendaITIX.pdb
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\obj\Debug\netcoreapp2.0\AgendaITIX.dll
+C:\Users\pv199\Documents\Visual Studio 2017\Projects\AgendaITIX\AgendaITIX\obj\Debug\netcoreapp2.0\AgendaITIX.pdb

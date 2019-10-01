@@ -1,0 +1,56 @@
+﻿@model AgendaITIX.Models.Consulta
+
+@{
+    ViewData["Title"] = " - Cadastrar Nova Consulta";
+    Layout = null;
+}
+
+<form method="post" asp-action="create">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"></button>
+                <h4 class="modal-title">
+                    <i class='fa fa-users'></i>Cadastrar Nova Consulta
+                </h4>
+                <hr />
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="DataIni" class="control-label"></label>
+                            <input asp-for="DataIni" class="form-control" />
+                            <span asp-validation-for="DataIni" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="DataFim" class="control-label"></label>
+                            <input asp-for="DataFim" class="form-control" />
+                            <span asp-validation-for="DataFim" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="Observacoes" class="control-label"></label>
+                            <input asp-for="Observacoes" class="form-control" />
+                            <span asp-validation-for="Observacoes" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="PacienteId" class="control-label"></label>
+                            <input asp-for="PacienteId" class="form-control" />
+                            <span asp-validation-for="PacienteId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input type="submit" value="Save" class="btn btn-default pull-right" style="background-color:lightgreen" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

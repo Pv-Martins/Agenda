@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Agenda de Consultas - ITIX";
+}
+
+@model List<Consulta>;
+
+<h3>Próximas Consultas</h3>
+<form method="post" asp-action="index"></form>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-1">
+                Código
+            </div>
+            <div class="col-md-2">
+                Nome Paciente
+            </div>
+            <div class="col-md-1">
+                Nascimento
+            </div>
+            <div class="col-md-3">
+                Observação
+            </div>
+            <div class="col-md-2 text-center">
+                Inicio
+            </div>
+            <div class="col-md-2 text-center">
+                Término
+            </div>
+            <div class="col-md-1 text-center">
+                Ações
+            </div>
+
+        </div>
+    </div>
+    <div class="panel-body">
+        @foreach (var consulta in Model)
+        {
+
+            <div class="row row-center linha-produto" item-id="@(consulta.Id)">
+                <div class="col-md-1">
+                    @(consulta.Id)
+                </div>
+                <div class="col-md-2">
+                    @(consulta.Paciente.Nome)
+                </div>
+                <div class="col-md-1 text-center">
+                    @(consulta.Paciente.DtNascimento.ToString("dd-MM-yy"))
+                </div>
+                <div class="col-md-3">
+                    @(consulta.Observacoes)
+                </div>
+                <div class="col-md-2 text-center">
+                   @(consulta.DataIni)
+                </div>
+                <div class="col-md-2 text-center">
+                    @(consulta.DataFim)
+                </div>
+                <div class="col-md-1 text-center">
+                    <div class="input-group" text-center>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    onclick="EditConsulta(@(consulta.Id))"
+                                    data-toggle="tooltip" title="Editar Consulta">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn">
+                            <a asp-action="delete" 
+                            asp-route-id="@(consulta.Id)"
+                            class="btn btn-default" 
+                            data-toggle="tooltip" title="Remover Consulta.">
+                                    <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+        }
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-10">
+                <span numero-itens>
+                    Total: @(Model.Count()) Consulta(s)
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="pull-right">
+            <a class="btn btn-success" onclick="CreateConsulta()">
+                Adicionar Consulta
+            </a>
+            <a class="btn btn-success" onclick="CreatePaciente()">
+                Cadastrar Paciente
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="indexModal"></div>
+
+@section Scripts {
+<script type="text/javascript">
+        function confirmSubmit() {
+            confirm('Confirma Exclusão do Registro?')
+        }
+        function CreateConsulta() {
+            $("#indexModal").load("@Url.Action("Create", "Consulta")/", function () {
+                $("#indexModal").modal();
+            });
+        }
+        function EditConsulta(id) {
+            $("#indexModal").load("@Url.Action("Edit", "Consulta")/" + id, function () {
+                $("#indexModal").modal();
+            });
+        }
+        function CreatePaciente() {
+            $("#indexModal").load("@Url.Action("Create", "Paciente")/", function () {
+                $("#indexModal").modal();
+            });
+        }
+</script>
+}
