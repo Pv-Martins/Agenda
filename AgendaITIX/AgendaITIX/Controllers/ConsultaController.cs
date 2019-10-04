@@ -12,17 +12,17 @@ namespace AgendaITIX.Controllers
 {
     public class ConsultaController : Controller
     {
-        private readonly IConsultaRepository consultaRepository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public ConsultaController(IConsultaRepository consultaRepository)
+        public ConsultaController(IUnitOfWork unitOfWork)
         {
-            this.consultaRepository = consultaRepository;
+            this.unitOfWork = unitOfWork;
         }
-
+        
         // GET: Consulta
         public IActionResult Index()
         {
-            return View(consultaRepository.GetConsultas());
+            return View(unitOfWork.Consultas.GetAll());
         }
 
         // GET: Consulta/Create
@@ -39,8 +39,9 @@ namespace AgendaITIX.Controllers
         {
             try
             {
-                consultaRepository.SaveConsulta(consulta);
-    
+                unitOfWork.Consultas.Insert(consulta);
+                unitOfWork.Save();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -52,7 +53,7 @@ namespace AgendaITIX.Controllers
         // GET: Consulta/Edit/5
         public IActionResult Edit(int id)
         {
-            var consulta = consultaRepository.GetConsulta(id);
+            var consulta = unitOfWork.Consultas.GetById(id);
             if (consulta == null)
             {
                 return NotFound();
@@ -65,7 +66,8 @@ namespace AgendaITIX.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Consulta consulta)
         {
-            consultaRepository.UpdateConsulta(id, consulta);
+            unitOfWork.Consultas.Update(consulta);
+            unitOfWork.Save();
 
             return RedirectToAction("Index");
         }
@@ -73,7 +75,8 @@ namespace AgendaITIX.Controllers
         // GET: Consulta/Delete/5
         public IActionResult Delete(int id)
         {
-            consultaRepository.RemoveConsulta(id);
+            unitOfWork.Consultas.Delete(id);
+            unitOfWork.Save();
             return RedirectToAction("Index");
         }
 
@@ -84,8 +87,8 @@ namespace AgendaITIX.Controllers
         {
             // TODO ATUALIZAR PARA DELETAR NO POST.
 
-            consultaRepository.RemoveConsulta(consulta.Id);
-
+            unitOfWork.Consultas.Delete(consulta.Id);
+            unitOfWork.Save();
             return RedirectToAction("Index");
         }
 

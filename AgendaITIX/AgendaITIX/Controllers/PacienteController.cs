@@ -12,11 +12,11 @@ namespace AgendaITIX.Controllers
 {
     public class PacienteController : Controller
     {
-        private readonly IPacienteRepository pacienteRepository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public PacienteController(IPacienteRepository pacienteRepository)
+        public PacienteController(IUnitOfWork unitOfWork)
         {
-            this.pacienteRepository = pacienteRepository;
+            this.unitOfWork = unitOfWork;
         }
 
         // GET: Paciente/Create
@@ -32,7 +32,8 @@ namespace AgendaITIX.Controllers
         {
             try
             {
-                pacienteRepository.SavePaciente(paciente);
+                unitOfWork.Pacientes.Insert(paciente);
+                unitOfWork.Save();
 
                 return RedirectToAction("Index", "Consulta");
             }
@@ -48,3 +49,4 @@ namespace AgendaITIX.Controllers
         }
     }
 }
+
